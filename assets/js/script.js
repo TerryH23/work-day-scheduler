@@ -1,46 +1,59 @@
 $(document).ready(function(){
 
-$(".jumbotron").css("background-color", "lightblue");
-
-
+var currentTime = moment().format("H");
 var today = moment().format("dddd LL hA")
+$(".jumbotron").css("background-color", "lightblue");
 $("#currentDay").text(today);
-
-
 
 // need to fix the function, it is only adding the future class
 
-$(".time-block").each(function() {
+$(".description").each(function() {
 
-    var currentTime = moment().format("hA");
     var hour = $(".hour");
     
     if (currentTime == hour) {
         $(this).addClass("present");
-        // $(this).removeClass("past");
-    
+
     } else if (currentTime < hour) {
         $(this).removeClass("present");
         $(this).addClass("future");
-    
+ 
     } else if (currentTime > hour) {
         $(this).removeClass("future");
         $(this).addClass("past");
+    
+}})
+
+// retrieves saved local storage
+$(".description").each(function () {
+
+    for (i = 0; i < localStorage.length; i++) {
+        var timeOfDay = localStorage.key(i);
+        var enteredText = localStorage.getItem(timeOfDay);
+        var scheduledTime = $(this).siblings(".hour").text();
+
+    if (timeOfDay === scheduledTime) 
+            $(this).val(enteredText);
+
+}});
+
+
+// save button to set local storage
+$(".saveBtn").on("click", function () {
+    var time = $(this).siblings(".hour").text();
+    var toDo = $(this).siblings(".description").val();
+
+    if (toDo == "") {
+        localStorage.setItem(time, "");
     }
+    else {
+        localStorage.setItem(time, toDo);
+    
+}})
+
+// added a clear feature
+$(".clearSave").on("click", function () {
+    localStorage.clear()
 })
-
-
-
-// still need to add save button feature and localstorage
-
-
-// $(".saveBtn").click(function (event) {
-//     event.preventDefault;
-//     $("<textarea>").val("");
-//     localStorage.setItem("")
-// })
-
-
-
 
 });
