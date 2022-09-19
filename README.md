@@ -19,7 +19,7 @@ A planner which is color coded so that you can schedule your day for maximum eff
 
 ### Webpage
 
-
+https://terryh23.github.io/work-day-scheduler/
 
 ### Repository
 
