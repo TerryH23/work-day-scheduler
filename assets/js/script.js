@@ -1,15 +1,16 @@
-$(document).ready(function(){
+var currentTime = moment().format("HH");
+var today = moment().format("dddd LL hA");
 
-var currentTime = moment().format("H");
-var today = moment().format("dddd LL hA")
 $(".jumbotron").css("background-color", "lightblue");
+
+// displays current local date and time
 $("#currentDay").text(today);
 
-// need to fix the function, it is only adding the future class
 
+// function to set colored background of text area depedent on the whether it is past, present or future
 $(".description").each(function() {
 
-    var hour = $(".hour");
+    var hour = parseInt($(this).attr("id"));
     
     if (currentTime == hour) {
         $(this).addClass("present");
@@ -21,8 +22,10 @@ $(".description").each(function() {
     } else if (currentTime > hour) {
         $(this).removeClass("future");
         $(this).addClass("past");
-    
-}})
+    }
+
+});
+
 
 // retrieves saved local storage
 $(".description").each(function () {
@@ -37,23 +40,20 @@ $(".description").each(function () {
 
 }});
 
-
 // save button to set local storage
 $(".saveBtn").on("click", function () {
-    var time = $(this).siblings(".hour").text();
+    var scheduledTime = $(this).siblings(".hour").text();
     var toDo = $(this).siblings(".description").val();
 
     if (toDo == "") {
-        localStorage.setItem(time, "");
+        localStorage.setItem(scheduledTime, "");
     }
     else {
-        localStorage.setItem(time, toDo);
+        localStorage.setItem(scheduledTime, toDo);
     
-}})
+}});
 
-// added a clear feature
+// added a button to clear local storage
 $(".clearSave").on("click", function () {
     localStorage.clear()
-})
-
 });
