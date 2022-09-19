@@ -13,7 +13,7 @@ A planner which is color coded so that you can schedule your day for maximum eff
 
 ## Preview
 
-![Preview]()
+![Preview](https://github.com/TerryH23/work-day-scheduler/blob/main/assets/images/preview.png)
 
 ## Links
 
