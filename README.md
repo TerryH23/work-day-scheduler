@@ -1,5 +1,5 @@
 # work-day-scheduler
-Powered by JavaScript while using jQuery and Bootstrap
+Powered by JavaScript while utilizing jQuery and Bootstrap
 
 ## Description
 A planner which is color coded so that you can schedule your day for maximum efficiency
